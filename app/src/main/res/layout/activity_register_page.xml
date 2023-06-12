@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.RegisterPageActivity">
+
+
+    <EditText
+        android:id="@+id/emailSingUpTextEdit"
+        android:layout_width="284dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="28dp"
+        android:autofillHints=""
+        android:background="@drawable/input_background"
+        android:ems="10"
+        android:fontFamily="@font/montserrat"
+        android:hint="@string/login_sign_in_hint"
+        android:inputType="textEmailAddress"
+        android:minHeight="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPhoneNumber" />
+
+    <EditText
+        android:id="@+id/enterPasswordSignUpTextEdit"
+        android:layout_width="284dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="28dp"
+        android:autofillHints=""
+        android:background="@drawable/input_background"
+        android:ems="10"
+        android:fontFamily="@font/montserrat"
+        android:hint="@string/password_sign_up_enter"
+        android:inputType="textPassword"
+        android:minHeight="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailSingUpTextEdit" />
+
+    <Button
+        android:id="@+id/signUpButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:width="284dp"
+        android:height="35dp"
+        android:fontFamily="@font/montserrat"
+        android:text="@string/button_sign_up"
+        android:textAllCaps="false"
+        android:textColor="@color/secondary_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/enterPasswordSignUpTextEdit" />
+
+    <TextView
+        android:id="@+id/signUpTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="@string/sign_up_title_page"
+        android:textColor="@color/primary_dark"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editTextPhoneNumber"
+        android:layout_width="284dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="28dp"
+        android:autofillHints="phone"
+        android:background="@drawable/input_background"
+        android:ems="10"
+        android:fontFamily="@font/montserrat"
+        android:hint="@string/phone_number_hint"
+        android:inputType="phone"
+        android:minHeight="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerCities" />
+
+    <EditText
+        android:id="@+id/editTextFIO"
+        android:layout_width="284dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="56dp"
+        android:autofillHints="name"
+        android:background="@drawable/input_background"
+        android:ems="10"
+        android:hint="@string/register_fio_hint"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signUpTitleTextView" />
+
+    <EditText
+        android:id="@+id/editTextDateOfBirth"
+        android:layout_width="284dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/input_background"
+        android:ems="10"
+        android:fontFamily="@font/montserrat"
+        android:hint="@string/register_page_date_of_birth"
+
+        android:importantForAutofill="no"
+        android:inputType="date"
+        android:minHeight="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextFIO" />
+
+    <Spinner
+        android:id="@+id/spinnerCities"
+        android:layout_width="284dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/input_background"
+        android:fontFamily="@font/montserrat"
+        android:hint="@string/register_cities_hint"
+        android:minHeight="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextDateOfBirth" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
