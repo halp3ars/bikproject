@@ -115,6 +115,7 @@
     <string name="register_fio_hint">ФИО</string>
 
     <string-array name="cities_array">
+        <item>Белгород</item>
         <item>Москва</item>
         <item>Санкт-Петербург</item>
         <item>Новосибирск</item>

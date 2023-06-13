@@ -1,11 +1,13 @@
 package com.example.bikproject.activities;
 
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,25 +15,28 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bikproject.R;
-import com.example.bikproject.models.enums.UserInfoEnum;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import org.checkerframework.common.value.qual.MatchesRegex;
+
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
 public class RegisterPageActivity extends AppCompatActivity {
 
+    public static final String FIO_REGEXP = "^[А-ЯЁ][а-яё]+\\\\s[А-ЯЁ][а-яё]+\\\\s[А-ЯЁ][а-яё]+$";
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firestore;
     EditText etFIO;
@@ -58,16 +63,42 @@ public class RegisterPageActivity extends AppCompatActivity {
         btnSignUp = (Button) findViewById(R.id.signUpButton);
 
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.cities_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spCities.setAdapter(adapter);
+        etBirthDate.setOnClickListener((View.OnClickListener) v1 -> {
+            final Calendar c1 = Calendar.getInstance();
+
+            int year12 = c1.get(Calendar.YEAR);
+            int month1 = c1.get(Calendar.MONTH);
+            int day1 = c1.get(Calendar.DAY_OF_MONTH);
+
+            DatePickerDialog datePickerDialog = new DatePickerDialog(
+                    RegisterPageActivity.this,
+                    (DatePickerDialog.OnDateSetListener) (view, year1, monthOfYear, dayOfMonth) -> {
+                        etBirthDate.setText(dayOfMonth + "." + (monthOfYear + 1) + "." + year1);
+
+                    },
+
+                    year12, month1, day1);
+
+            datePickerDialog.show();
+        });
+
+
+        spCities.setAdapter(getDropDownAdapter());
 
 
         firebaseAuth = FirebaseAuth.getInstance();
 
         btnSignUp.setOnClickListener(view -> signUpUser());
 
+
+    }
+
+    @NonNull
+    private ArrayAdapter<CharSequence> getDropDownAdapter() {
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(RegisterPageActivity.this,
+                R.array.cities_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        return adapter;
     }
 
 
@@ -105,7 +136,8 @@ public class RegisterPageActivity extends AppCompatActivity {
         }
     }
 
-    private void saveAdditionalInfo(String fio, String birthDate, String city, String phoneNumber, String email, Task<AuthResult> task) {
+    private void saveAdditionalInfo(String fio, String birthDate, String city, String
+            phoneNumber, String email, Task<AuthResult> task) {
         String uid = Objects.requireNonNull(task.getResult().getUser()).getUid();
         DocumentReference userRef = firestore.collection("users").document(uid);
         Map<String, Object> userInfo = new HashMap<>();
