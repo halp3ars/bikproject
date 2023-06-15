@@ -137,6 +137,15 @@
         <item>Тольятти</item>
         <item>Ижевск</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="menu_home_element">Главная</string>
+    <string name="menu_profile_element">Профиль</string>
+    <string name="account_balance_profile">Ваши баллы </string>
+    <string name="city_text_view_profile">Город: </string>
+    <string name="birthday_text_view_profile">Дата рождения: </string>
+    <string name="your_order_profile_button">Ваши заказы</string>
+    <string name="fio_text_view_profile">ФИО</string>
 
 
 </resources>

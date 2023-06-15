@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.bikproject.R;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginPageActivity extends AppCompatActivity {
 
@@ -32,7 +33,7 @@ public class LoginPageActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.reEnterPasswordSignUpTextEdit);
         Button etRegisterPage = findViewById(R.id.registerPageBtn);
 
-//        firstPage = new Intent(this, GroupChat.class);
+        firstPage = new Intent(this, MainPageActivity.class);
         registerPage = new Intent(this, RegisterPageActivity.class);
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -45,11 +46,11 @@ public class LoginPageActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-//        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
-//        if (currentUser != null) {
-//            startActivity(firstPage);
-//            finish();
-//        }
+        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+        if (currentUser != null) {
+            startActivity(firstPage);
+            finish();
+        }
     }
 
     private void loginUser() {

@@ -20,6 +20,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.bikproject.R;
+import com.example.bikproject.models.enums.UserInfoEnum;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
@@ -37,6 +38,7 @@ import java.util.Objects;
 public class RegisterPageActivity extends AppCompatActivity {
 
     public static final String FIO_REGEXP = "^[А-ЯЁ][а-яё]+\\\\s[А-ЯЁ][а-яё]+\\\\s[А-ЯЁ][а-яё]+$";
+    public static final String COLLECTION_PATH = "users";
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firestore;
     EditText etFIO;
@@ -54,16 +56,16 @@ public class RegisterPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register_page);
         FirebaseApp.initializeApp(this);
         firestore = FirebaseFirestore.getInstance();
-        etFIO = (EditText) findViewById(R.id.editTextFIO);
-        etBirthDate = (EditText) findViewById(R.id.editTextDateOfBirth);
-        spCities = (Spinner) findViewById(R.id.spinnerCities);
-        etPhoneNumber = (EditText) findViewById(R.id.editTextPhoneNumber);
-        etEmailEnter = (EditText) findViewById(R.id.emailSingUpTextEdit);
-        etPasswordEnter = (EditText) findViewById(R.id.enterPasswordSignUpTextEdit);
-        btnSignUp = (Button) findViewById(R.id.signUpButton);
+        etFIO = findViewById(R.id.editTextFIO);
+        etBirthDate = findViewById(R.id.editTextDateOfBirth);
+        spCities = findViewById(R.id.spinnerCities);
+        etPhoneNumber = findViewById(R.id.editTextPhoneNumber);
+        etEmailEnter = findViewById(R.id.emailSingUpTextEdit);
+        etPasswordEnter = findViewById(R.id.enterPasswordSignUpTextEdit);
+        btnSignUp = findViewById(R.id.signUpButton);
 
 
-        etBirthDate.setOnClickListener((View.OnClickListener) v1 -> {
+        etBirthDate.setOnClickListener(v1 -> {
             final Calendar c1 = Calendar.getInstance();
 
             int year12 = c1.get(Calendar.YEAR);
@@ -72,10 +74,7 @@ public class RegisterPageActivity extends AppCompatActivity {
 
             DatePickerDialog datePickerDialog = new DatePickerDialog(
                     RegisterPageActivity.this,
-                    (DatePickerDialog.OnDateSetListener) (view, year1, monthOfYear, dayOfMonth) -> {
-                        etBirthDate.setText(dayOfMonth + "." + (monthOfYear + 1) + "." + year1);
-
-                    },
+                    (view, year1, monthOfYear, dayOfMonth) -> etBirthDate.setText(dayOfMonth + "." + (monthOfYear + 1) + "." + year1),
 
                     year12, month1, day1);
 
@@ -139,13 +138,14 @@ public class RegisterPageActivity extends AppCompatActivity {
     private void saveAdditionalInfo(String fio, String birthDate, String city, String
             phoneNumber, String email, Task<AuthResult> task) {
         String uid = Objects.requireNonNull(task.getResult().getUser()).getUid();
-        DocumentReference userRef = firestore.collection("users").document(uid);
+        DocumentReference userRef = firestore.collection(COLLECTION_PATH).document(uid);
         Map<String, Object> userInfo = new HashMap<>();
-        userInfo.put("fio", fio);
-        userInfo.put("dateBirth", birthDate);
-        userInfo.put("city", city);
-        userInfo.put("phone", phoneNumber);
-        userInfo.put("email", email);
+        userInfo.put(UserInfoEnum.FIO.getField(), fio);
+        userInfo.put(UserInfoEnum.BIRTHDAY.getField(), birthDate);
+        userInfo.put(UserInfoEnum.CITY.getField(), city);
+        userInfo.put(UserInfoEnum.PHONE.getField(), phoneNumber);
+        userInfo.put(UserInfoEnum.EMAIL.getField(), email);
+        userInfo.put(UserInfoEnum.POINTS.getField(), 0);
         userRef.set(userInfo).addOnSuccessListener(aVoid -> {
                     createDialog().show();
                     finish();

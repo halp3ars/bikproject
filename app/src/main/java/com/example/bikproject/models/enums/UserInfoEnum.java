@@ -6,14 +6,17 @@ public enum UserInfoEnum {
     BIRTHDAY("dateBirth"),
     CITY("city"),
     PHONE("phone"),
-    EMAIL("email");
+    EMAIL("email"),
+    POINTS("points");
 
-    public String firestoreInfo;
 
-    UserInfoEnum(String firestoreInfo) {
+    private final String fields;
+
+    private UserInfoEnum(String fields) {
+        this.fields = fields;
     }
 
-    public String getFirestoreInfo() {
-        return firestoreInfo;
+    public String getField() {
+        return this.fields;
     }
 }
