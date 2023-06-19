@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -16,6 +15,9 @@
         android:theme="@style/Theme.Material3.Light.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".activities.DetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.LoginPageActivity"
             android:exported="true">
             <intent-filter>
@@ -24,13 +26,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activities.RegisterPageActivity"
             android:exported="false" />
         <activity
             android:name=".activities.MainPageActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

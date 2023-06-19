@@ -84,6 +84,8 @@ public class PersonFragment extends Fragment {
         return view;
     }
 
+    // TODO: 6/19/2023 add number of card
+
 
     private String getText(UserInfoEnum userInfoEnum) {
         return userData.get(userInfoEnum.getField()).toString();

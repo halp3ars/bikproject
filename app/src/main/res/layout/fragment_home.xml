@@ -6,4 +6,20 @@
     tools:context=".fragments.HomeFragment">
 
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="12dp"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="10.0sp"
+            android:scrollbars="vertical"
+            tools:listitem="@layout/list_item" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

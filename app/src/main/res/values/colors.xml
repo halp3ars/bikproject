@@ -10,7 +10,7 @@
     <color name="icon_background">#20FFFFFF</color>
     <color name="error">#B00020</color>
     <color name="received_message_background">#090D16</color>
-
+    <color name="lavender">#8692f7</color>
     <color name="colorPrimary">#137EF0</color>
     <color name="colorPrimaryDark">#1F86EF</color> <!--#1F86EF-->
     <color name="colorAccent">#000000</color>
@@ -363,7 +363,6 @@
     <color name="yellow">#F2B600</color>
     <color name="charcoal">#636363</color>
     <color name="light_grey">#DCDCDC</color>
-
 
 
 </resources>

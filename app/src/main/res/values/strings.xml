@@ -146,6 +146,10 @@
     <string name="birthday_text_view_profile">Дата рождения: </string>
     <string name="your_order_profile_button">Ваши заказы</string>
     <string name="fio_text_view_profile">ФИО</string>
+    <string name="details_title">Карточка продукта</string>
+    <string name="product_name_details">Название</string>
+    <string name="price_details">Цена</string>
+    <string name="name_product_details">Название продукта</string>
 
 
 </resources>
