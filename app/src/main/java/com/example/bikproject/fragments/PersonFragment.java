@@ -30,6 +30,7 @@ public class PersonFragment extends Fragment {
     TextView birthdayTextView;
     TextView cityTextView;
     TextView pointsTextView;
+    TextView cardNumberTextView;
     Map<String, Object> userData;
 
 
@@ -49,6 +50,7 @@ public class PersonFragment extends Fragment {
         birthdayTextView = view.findViewById(R.id.birthdayTextViewProfile);
         cityTextView = view.findViewById(R.id.cityTextViewProfile);
         pointsTextView = view.findViewById(R.id.pointsTextViewProfile);
+        cardNumberTextView = view.findViewById(R.id.cardNumber);
 
         Context context = container.getContext();
         FirebaseApp.initializeApp(context);
@@ -66,6 +68,7 @@ public class PersonFragment extends Fragment {
                         birthdayTextView.append(" " + getText(UserInfoEnum.BIRTHDAY));
                         cityTextView.append(" " + getText(UserInfoEnum.CITY));
                         pointsTextView.append(" " + getText(UserInfoEnum.POINTS));
+                        cardNumberTextView.append(" " + uid);
 
                     } else {
                         showToastError(context);

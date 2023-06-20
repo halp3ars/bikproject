@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginVertical="10dp"
+    android:layout_marginStart="12dp"
+    android:layout_marginEnd="12dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/orderName"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="12dp"
+            android:text="Название"
+            android:textColor="@color/lavender"
+            android:textSize="20sp" />
+
+
+        <TextView
+            android:id="@+id/dateOrder"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="40dp"
+            android:text="Дата"
+            android:textColor="@color/lavender"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/bonusOrderAmount"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="142dp"
+            android:layout_marginTop="22dp"
+            android:layout_toEndOf="@id/orderName"
+            android:text="@string/orders_bonus_txt"
+            android:textColor="@color/lavender"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

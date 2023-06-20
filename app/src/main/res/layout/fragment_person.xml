@@ -52,19 +52,30 @@
     <LinearLayout
         android:id="@+id/block2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="105dp"
         android:layout_below="@+id/block1"
         android:layout_marginTop="16dp"
+        android:orientation="vertical"
         android:background="#FFFFFF"
         android:padding="16dp">
 
         <TextView
             android:id="@+id/pointsTextViewProfile"
             android:layout_width="match_parent"
+
             android:layout_height="wrap_content"
             android:text="@string/account_balance_profile"
             android:textAlignment="center"
             android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/cardNumber"
+            android:layout_width="379dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/card_number_text"
+            android:textAlignment="center"
+            android:textSize="12sp" />
 
     </LinearLayout>
 

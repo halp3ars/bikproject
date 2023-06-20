@@ -1,7 +1,6 @@
 package com.example.bikproject.adapters;
 
 import android.content.Context;
-import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,31 +12,30 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.bikproject.R;
-import com.example.bikproject.models.dto.ListData;
+import com.example.bikproject.models.dto.ItemsData;
 
-import java.net.URI;
 import java.util.ArrayList;
 
-public class ListAdapter extends ArrayAdapter<ListData> {
+public class ItemsAdapter extends ArrayAdapter<ItemsData> {
 
 
-    public ListAdapter(@NonNull Context context, ArrayList<ListData> dataArrayList) {
+    public ItemsAdapter(@NonNull Context context, ArrayList<ItemsData> dataArrayList) {
         super(context, R.layout.list_item, dataArrayList);
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View view, @NonNull ViewGroup parent) {
-        ListData listData = getItem(position);
+        ItemsData itemsData = getItem(position);
         if (view == null) {
             view = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
         }
         ImageView listImage = view.findViewById(R.id.listImage);
         TextView listName = view.findViewById(R.id.listName);
         TextView listPrice = view.findViewById(R.id.listPrice);
-        listImage.setImageURI(listData.getImage());
-        listName.setText(listData.getName());
-        listPrice.setText(listData.getPrice().toString());
+        listImage.setImageURI(itemsData.getImage());
+        listName.setText(itemsData.getName());
+        listPrice.setText(itemsData.getPrice().toString());
         return view;
     }
 

@@ -150,6 +150,10 @@
     <string name="product_name_details">Название</string>
     <string name="price_details">Цена</string>
     <string name="name_product_details">Название продукта</string>
+    <string name="buy">Купить</string>
+    <string name="succec_buy">Вы успешно купили товар, бонусы зачислены на счет!</string>
+    <string name="card_number_text">Номер карты</string>
+    <string name="orders_bonus_txt">Бонусы</string>
 
 
 </resources>

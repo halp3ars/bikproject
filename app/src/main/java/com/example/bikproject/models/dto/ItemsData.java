@@ -5,20 +5,20 @@ import android.net.Uri;
 
 import javax.annotation.Nullable;
 
-public class ListData {
+public class ItemsData {
 
     private String name;
     private Integer price;
     private Uri image;
 
 
-    public ListData(String name, Integer price, @Nullable Uri image) {
+    public ItemsData(String name, Integer price, @Nullable Uri image) {
         this.name = name;
         this.price = price;
         this.image = image;
     }
 
-    public ListData() {
+    public ItemsData() {
     }
 
     public String getName() {
