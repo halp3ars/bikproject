@@ -87,25 +87,6 @@ public class DetailsActivity extends AppCompatActivity {
         return balance + bonus;
     }
 
-
-    private void saveOrder(String uid) {
-        CollectionReference collection = firestore.collection(COLLECTION_PATH_ORDERS);
-        DocumentReference document = collection.document(uid);
-        Task<DocumentSnapshot> documentSnapshotTask = document.get();
-        documentSnapshotTask.addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                CollectionReference allOrders = document.collection(COLLECTION_ALL_ORDERS);
-                allOrders.get().addOnCompleteListener(orders -> {
-                    if (orders.isSuccessful()) {
-
-                    }
-                });
-            } else if (task.isComplete()) {
-            }
-
-        });
-    }
-
     private Dialog createDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.succec_buy)
