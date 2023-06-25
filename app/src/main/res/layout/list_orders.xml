@@ -27,24 +27,14 @@
 
 
         <TextView
-            android:id="@+id/dateOrder"
-            android:layout_width="120dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="40dp"
-            android:text="Дата"
-            android:textColor="@color/lavender"
-            android:textSize="14sp" />
-
-        <TextView
-            android:id="@+id/bonusOrderAmount"
+            android:id="@+id/price_cart"
             android:layout_width="80dp"
             android:layout_height="30dp"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="142dp"
-            android:layout_marginTop="22dp"
+            android:layout_marginStart="137dp"
+            android:layout_marginTop="14dp"
             android:layout_toEndOf="@id/orderName"
-            android:text="@string/orders_bonus_txt"
+            android:text="@string/price_sum_txt"
             android:textColor="@color/lavender"
             android:textSize="16sp" />
 

@@ -74,11 +74,11 @@
         android:textSize="20sp" />
 
     <Button
-        android:layout_marginTop="60dp"
-        android:id="@+id/buttonBuy"
+        android:id="@+id/buttonAddInCart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/buy" />
+        android:layout_marginTop="60dp"
+        android:text="@string/add_in_cart_text" />
 
 
 </LinearLayout>

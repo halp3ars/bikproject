@@ -1,4 +1,4 @@
-package com.example.bikproject.models.dto;
+package com.example.bikproject.models.adapters;
 
 
 import android.net.Uri;

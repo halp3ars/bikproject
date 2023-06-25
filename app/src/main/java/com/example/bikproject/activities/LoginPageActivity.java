@@ -16,8 +16,8 @@ import com.google.firebase.auth.FirebaseUser;
 public class LoginPageActivity extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth;
-    private Intent firstPage;
-    private Intent registerPage;
+    private Intent firstPageIntent;
+    private Intent registerPageIntent;
     private EditText etEmail;
     private EditText etPassword;
 
@@ -31,24 +31,23 @@ public class LoginPageActivity extends AppCompatActivity {
         Button loginButton = findViewById(R.id.logInButton);
         etEmail = findViewById(R.id.emailSingUpTextEdit);
         etPassword = findViewById(R.id.reEnterPasswordSignUpTextEdit);
-        Button etRegisterPage = findViewById(R.id.registerPageBtn);
+        Button registerPageButton = findViewById(R.id.registerPageBtn);
 
-        firstPage = new Intent(this, MainPageActivity.class);
-        registerPage = new Intent(this, RegisterPageActivity.class);
+        firstPageIntent = new Intent(this, MainPageActivity.class);
+        registerPageIntent = new Intent(this, RegisterPageActivity.class);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
-        etRegisterPage.setOnClickListener(view -> startActivity(registerPage));
+        registerPageButton.setOnClickListener(view -> startActivity(registerPageIntent));
         loginButton.setOnClickListener(view -> loginUser());
     }
-
 
     @Override
     protected void onStart() {
         super.onStart();
         FirebaseUser currentUser = firebaseAuth.getCurrentUser();
         if (currentUser != null) {
-            startActivity(firstPage);
+            startActivity(firstPageIntent);
             finish();
         }
     }
@@ -64,17 +63,15 @@ public class LoginPageActivity extends AppCompatActivity {
             etPassword.setError(getString(R.string.password_can_not_be_empty));
             etPassword.requestFocus();
         } else {
-            firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
+            firebaseAuth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
-                            startActivity(firstPage);
+                            startActivity(firstPageIntent);
                             finish();
-                        } else if (task.isComplete()) {
+                        } else {
                             etPassword.setError(getString(R.string.login_or_password_error));
                         }
-                    }
-            );
+                    });
         }
-
-
     }
 }

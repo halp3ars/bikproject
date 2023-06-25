@@ -33,14 +33,12 @@ public class PersonFragment extends Fragment {
     TextView cardNumberTextView;
     Map<String, Object> userData;
 
-
     public PersonFragment() {
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -63,13 +61,7 @@ public class PersonFragment extends Fragment {
                     DocumentSnapshot result = task.getResult();
                     if (result.exists()) {
                         userData = result.getData();
-
-                        fioTextView.setText(getText(UserInfoEnum.FIO));
-                        birthdayTextView.append(" " + getText(UserInfoEnum.BIRTHDAY));
-                        cityTextView.append(" " + getText(UserInfoEnum.CITY));
-                        pointsTextView.append(" " + getText(UserInfoEnum.POINTS));
-                        cardNumberTextView.append(" " + uid);
-
+                        displayUserData();
                     } else {
                         showToastError(context);
                     }
@@ -83,12 +75,16 @@ public class PersonFragment extends Fragment {
             return view;
         }
 
-
         return view;
     }
 
-    // TODO: 6/19/2023 add number of card
-
+    private void displayUserData() {
+        fioTextView.setText(getText(UserInfoEnum.FIO));
+        birthdayTextView.append(" " + getText(UserInfoEnum.BIRTHDAY));
+        cityTextView.append(" " + getText(UserInfoEnum.CITY));
+        pointsTextView.append(" " + getText(UserInfoEnum.POINTS));
+        cardNumberTextView.append(" " + FirebaseAuth.getInstance().getUid());
+    }
 
     private String getText(UserInfoEnum userInfoEnum) {
         return userData.get(userInfoEnum.getField()).toString();
@@ -97,4 +93,5 @@ public class PersonFragment extends Fragment {
     private void showToastError(Context context) {
         Toast.makeText(context, getString(R.string.error_can_not_perfom_sign_up), Toast.LENGTH_SHORT).show();
     }
+
 }

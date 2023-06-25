@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.bikproject.R;
-import com.example.bikproject.models.dto.ItemsData;
+import com.example.bikproject.models.adapters.ItemsData;
 
 import java.util.ArrayList;
 

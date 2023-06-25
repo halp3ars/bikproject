@@ -15,7 +15,7 @@ import android.widget.ListView;
 import com.example.bikproject.R;
 import com.example.bikproject.activities.DetailsActivity;
 import com.example.bikproject.adapters.ItemsAdapter;
-import com.example.bikproject.models.dto.ItemsData;
+import com.example.bikproject.models.adapters.ItemsData;
 import com.example.bikproject.models.enums.ProductEnum;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.firestore.CollectionReference;

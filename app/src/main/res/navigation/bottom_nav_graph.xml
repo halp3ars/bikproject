@@ -15,4 +15,9 @@
         android:name="com.example.bikproject.fragments.PersonFragment"
         android:label="fragment_person"
         tools:layout="@layout/fragment_person" />
+    <activity
+        android:id="@+id/cartActivity"
+        android:name="com.example.bikproject.activities.CartActivity"
+        android:label="activity_cart"
+        tools:layout="@layout/activity_cart" />
 </navigation>

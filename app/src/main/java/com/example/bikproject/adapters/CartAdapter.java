@@ -11,30 +11,28 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.bikproject.R;
-import com.example.bikproject.models.dto.OrdersDto;
+import com.example.bikproject.models.adapters.ProductCart;
 
 import java.util.ArrayList;
 
-public class OrdersAdapter extends ArrayAdapter<OrdersDto> {
+public class CartAdapter extends ArrayAdapter<ProductCart> {
 
 
-    public OrdersAdapter(@NonNull Context context, ArrayList<OrdersDto> dataArrayList) {
+    public CartAdapter(@NonNull Context context, ArrayList<ProductCart> dataArrayList) {
         super(context, R.layout.list_orders, dataArrayList);
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View view, @NonNull ViewGroup parent) {
-        OrdersDto listData = getItem(position);
+        ProductCart listData = getItem(position);
         if (view == null) {
             view = LayoutInflater.from(getContext()).inflate(R.layout.list_orders, parent, false);
         }
         TextView orderName = view.findViewById(R.id.orderName);
-        TextView dateOrder = view.findViewById(R.id.dateOrder);
-        TextView bonusAmount = view.findViewById(R.id.bonusOrderAmount);
+        TextView priceCart = view.findViewById(R.id.price_cart);
         orderName.setText(listData.getName());
-        dateOrder.setText(listData.getDate());
-        bonusAmount.setText(listData.getPoints().toString());
+        priceCart.setText(listData.getPrice().toString());
         return view;
     }
 

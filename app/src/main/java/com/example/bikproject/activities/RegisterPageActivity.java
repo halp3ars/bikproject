@@ -2,6 +2,7 @@ package com.example.bikproject.activities;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -135,8 +136,7 @@ public class RegisterPageActivity extends AppCompatActivity {
         }
     }
 
-    private void saveAdditionalInfo(String fio, String birthDate, String city, String
-            phoneNumber, String email, Task<AuthResult> task) {
+    private void saveAdditionalInfo(String fio, String birthDate, String city, String phoneNumber, String email, Task<AuthResult> task) {
         String uid = Objects.requireNonNull(task.getResult().getUser()).getUid();
         DocumentReference userRef = firestore.collection(COLLECTION_PATH).document(uid);
         Map<String, Object> userInfo = new HashMap<>();
@@ -146,22 +146,27 @@ public class RegisterPageActivity extends AppCompatActivity {
         userInfo.put(UserInfoEnum.PHONE.getField(), phoneNumber);
         userInfo.put(UserInfoEnum.EMAIL.getField(), email);
         userInfo.put(UserInfoEnum.POINTS.getField(), 0);
-        userRef.set(userInfo).addOnSuccessListener(aVoid -> {
-                    createDialog().show();
-                    finish();
+        userRef.set(userInfo)
+                .addOnSuccessListener(aVoid -> {
+                    showSuccessDialog();
                 })
-                .addOnFailureListener(e -> Log.e("REG", e.getMessage()));
+                .addOnFailureListener(e -> {
+                    Log.e("REG", e.getMessage());
+                });
     }
 
-
-    private Dialog createDialog() {
+    private void showSuccessDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.sign_up_succefull_messasges)
-                .setPositiveButton(R.string.sign_up_succefull_messasges_ok_button, (dialog, id) ->
-                        startActivity(new Intent(RegisterPageActivity.this, LoginPageActivity.class)));
-        return builder.create();
-
+                .setPositiveButton(R.string.sign_up_succefull_messasges_ok_button, (dialog, id) -> {
+                    Intent intent = new Intent(RegisterPageActivity.this, LoginPageActivity.class);
+                    startActivity(intent);
+                });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+        finish();
     }
+
 
 
 }
